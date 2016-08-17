@@ -20,12 +20,12 @@ public class HibernateFirst {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        SessionFactory sf = null;
+        SessionFactory sessionFactory = null;
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure(new File("hibernate.cfg.xml")).build();
         try {
-            sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-            Session s = sf.openSession();
+            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+            Session s = sessionFactory.openSession();
             s.beginTransaction();
             Type t = new Type();
             t.setTypeName("Стол");
@@ -36,7 +36,7 @@ public class HibernateFirst {
             StandardServiceRegistryBuilder.destroy(registry);
             ex.printStackTrace();
         } finally {
-            sf.close();
+            sessionFactory.close();
         }
 
     }

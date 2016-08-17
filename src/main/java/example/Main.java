@@ -1,17 +1,10 @@
 package example;
 
 import media.AppUser;
-import media.Type;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import utils.HibernateUtil;
 
-/**
- * Created by vector on 16.08.2016.
- */
 
 public class Main {
 
