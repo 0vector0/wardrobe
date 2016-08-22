@@ -2,6 +2,7 @@ package example;
 
 import media.AppUser;
 import models.Consumer;
+import models.Item;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -23,6 +24,11 @@ public class Main {
         consumer.setEmail("petro@petro.com");
         consumer.setPassword("123");
         session.save(consumer);
+
+        Item item = new Item();
+        item.setName("item1");
+        session.save(item);
+
 
         session.getTransaction().commit();
         session.close();
