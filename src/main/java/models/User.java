@@ -3,12 +3,12 @@ package models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TB_USER")
-public class User {
+@Table(name = "tb_user")
+public class User extends Model {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private int id;
 
     private String userName;
 
@@ -20,12 +20,20 @@ public class User {
 
     private String city;
 
-    public int getId() {
-        return id;
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
+
+
+    public User() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public User(Long id) {
+        super(id);
     }
 
     public String getUserName() {

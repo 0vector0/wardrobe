@@ -1,6 +1,7 @@
 package example;
 
 import media.AppUser;
+import models.Consumer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -15,8 +16,13 @@ public class Main {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        AppUser user = new AppUser("firstuser");
-        session.save(user);
+        Consumer consumer = new Consumer();
+
+//        AppUser user = new AppUser("firstuser");
+        consumer.setFirstName("petro");
+        consumer.setEmail("petro@petro.com");
+        consumer.setPassword("123");
+        session.save(consumer);
 
         session.getTransaction().commit();
         session.close();
