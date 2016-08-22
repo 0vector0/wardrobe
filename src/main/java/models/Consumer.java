@@ -5,6 +5,8 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "consumer")
@@ -27,6 +29,10 @@ public class Consumer extends Model  {
     @Type(type="date")
    // @Temporal(value=TemporalType.DATE)
     private Date birthday;
+
+    @OneToMany(mappedBy="consumer", fetch = FetchType.LAZY)
+    private Set<Item> users = new HashSet<Item>();
+
 
     public Consumer() {
     }
