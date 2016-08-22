@@ -3,6 +3,7 @@ package models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -10,7 +11,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name = "item")
-public class Item extends Model {
+public class Item extends Model  {
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 

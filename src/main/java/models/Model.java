@@ -2,9 +2,12 @@ package models;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @MappedSuperclass
-public class Model {
+public class Model implements Serializable {
+
+    private static final long serialVersionUID = -5449174010904674060L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

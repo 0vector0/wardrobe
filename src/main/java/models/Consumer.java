@@ -3,11 +3,12 @@ package models;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "consumer")
-public class Consumer extends Model {
+public class Consumer extends Model  {
 
     @Column(name = "email", length=50, nullable=false)
     private String email;
