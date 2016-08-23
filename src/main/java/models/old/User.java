@@ -1,4 +1,6 @@
-package models;
+package models.old;
+
+import models.Model;
 
 import javax.persistence.*;
 

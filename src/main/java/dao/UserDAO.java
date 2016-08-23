@@ -1,7 +1,7 @@
 package dao;
 
 
-import models.User;
+import models.old.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

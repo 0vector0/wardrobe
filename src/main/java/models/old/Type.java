@@ -1,4 +1,4 @@
-package media;
+package models.old;
 
 
 import org.hibernate.annotations.GenericGenerator;

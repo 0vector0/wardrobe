@@ -32,6 +32,9 @@ public class Consumer extends Model  {
     @OneToMany(mappedBy="consumer", fetch = FetchType.LAZY)
     private Set<Item> items = new HashSet<Item>();
 
+    @OneToMany(mappedBy = "consumer", fetch = FetchType.LAZY)
+    private Set<Day> days = new HashSet<Day>();
+
 
     public Consumer() {
     }

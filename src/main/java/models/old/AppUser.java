@@ -1,4 +1,4 @@
-package media;
+package models.old;
 
 import javax.persistence.*;
 import java.io.Serializable;
