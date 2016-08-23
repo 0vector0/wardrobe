@@ -1,6 +1,6 @@
-package controller;
+package com.github.mykhalechko.wardrobe.controller;
 
-import dao.UserDAO;
+import com.github.mykhalechko.wardrobe.dao.UserDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

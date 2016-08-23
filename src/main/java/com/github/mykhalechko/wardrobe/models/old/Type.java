@@ -1,4 +1,4 @@
-package models.old;
+package com.github.mykhalechko.wardrobe.models.old;
 
 
 import org.hibernate.annotations.GenericGenerator;

@@ -1,7 +1,7 @@
-package example;
+package com.github.mykhalechko.wardrobe.example;
 
-import models.Consumer;
-import models.Item;
+import com.github.mykhalechko.wardrobe.models.Consumer;
+import com.github.mykhalechko.wardrobe.models.Item;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

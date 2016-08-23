@@ -1,4 +1,4 @@
-package models.old;
+package com.github.mykhalechko.wardrobe.models.old;
 
 import javax.persistence.*;
 import java.io.Serializable;

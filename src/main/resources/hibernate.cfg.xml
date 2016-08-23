@@ -13,12 +13,12 @@
         <property name="hibernate.connection.useUnicode">true</property>
         <property name="hbm2ddl.auto">create</property>
 
-        <mapping class="models.Consumer"/>
-        <mapping class="models.Item"/>
-        <mapping class="models.Wardrobe"/>
-        <mapping class="models.Category"/>
-        <mapping class="models.Day"/>
-        <mapping class="models.Look"/>
+        <mapping class="com.github.mykhalechko.wardrobe.models.Consumer"/>
+        <mapping class="com.github.mykhalechko.wardrobe.models.Item"/>
+        <mapping class="com.github.mykhalechko.wardrobe.models.Wardrobe"/>
+        <mapping class="com.github.mykhalechko.wardrobe.models.Category"/>
+        <mapping class="com.github.mykhalechko.wardrobe.models.Day"/>
+        <mapping class="com.github.mykhalechko.wardrobe.models.Look"/>
 
     </session-factory>
 </hibernate-configuration>

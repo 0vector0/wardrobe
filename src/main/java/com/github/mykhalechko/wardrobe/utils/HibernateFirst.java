@@ -1,7 +1,7 @@
-package utils;
+package com.github.mykhalechko.wardrobe.utils;
 
 
-import models.old.Type;
+import com.github.mykhalechko.wardrobe.models.old.Type;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;

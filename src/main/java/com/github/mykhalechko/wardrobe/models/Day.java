@@ -1,4 +1,4 @@
-package models;
+package com.github.mykhalechko.wardrobe.models;
 
 import org.hibernate.annotations.Type;
 

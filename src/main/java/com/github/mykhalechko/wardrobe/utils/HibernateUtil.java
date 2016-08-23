@@ -1,4 +1,4 @@
-package utils;
+package com.github.mykhalechko.wardrobe.utils;
 
 
 import org.hibernate.SessionFactory;

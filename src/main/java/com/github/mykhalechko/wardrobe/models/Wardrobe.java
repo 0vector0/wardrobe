@@ -1,38 +1,26 @@
-package models;
+package com.github.mykhalechko.wardrobe.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "category")
-public class Category extends Model {
+@Table(name = "wardrobe")
+public class Wardrobe extends Model {
 
-    private static final long serialVersionUID = 4482487573155059686L;
+    private static final long serialVersionUID = 3829403741018341731L;
     @Column(name = "name", nullable = false)
     private String name;
     @Column(name = "description")
     private String description;
-    @ManyToMany(mappedBy = "itemCategory")
+    @OneToMany(mappedBy = "wardrobe", fetch = FetchType.LAZY)
     private Set<Item> items = new HashSet<Item>();
 
-    public Category() {
-
+    public Wardrobe() {
     }
 
-    public Category(Long id) {
+    public Wardrobe(Long id) {
         super(id);
-    }
-
-    public Set<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(Set<Item> items) {
-        this.items = items;
     }
 
     public String getName() {
@@ -49,5 +37,13 @@ public class Category extends Model {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(Set<Item> items) {
+        this.items = items;
     }
 }

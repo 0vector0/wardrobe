@@ -1,6 +1,6 @@
-package models.old;
+package com.github.mykhalechko.wardrobe.models.old;
 
-import models.Model;
+import com.github.mykhalechko.wardrobe.models.Model;
 
 import javax.persistence.*;
 

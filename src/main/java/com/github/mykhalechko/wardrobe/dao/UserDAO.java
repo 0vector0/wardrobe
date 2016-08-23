@@ -1,7 +1,7 @@
-package dao;
+package com.github.mykhalechko.wardrobe.dao;
 
 
-import models.old.User;
+import com.github.mykhalechko.wardrobe.models.old.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
