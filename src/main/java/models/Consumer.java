@@ -27,11 +27,10 @@ public class Consumer extends Model  {
 
     @Column(name= "birthday")
     @Type(type="date")
-   // @Temporal(value=TemporalType.DATE)
     private Date birthday;
 
     @OneToMany(mappedBy="consumer", fetch = FetchType.LAZY)
-    private Set<Item> users = new HashSet<Item>();
+    private Set<Item> items = new HashSet<Item>();
 
 
     public Consumer() {

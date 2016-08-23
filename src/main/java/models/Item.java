@@ -1,12 +1,9 @@
 package models;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**
- * Created by vector on 22.08.2016.
- */
+
 @Entity
 @Table(name = "item")
 public class Item extends Model  {
@@ -28,6 +25,10 @@ public class Item extends Model  {
     @ManyToOne
     @JoinColumn(name="consumer_id")
     private Consumer consumer;
+
+    @ManyToOne
+    @JoinColumn(name = "wardrobe_id")
+    private Wardrobe wardrobe;
 
     public Item() {
     }
