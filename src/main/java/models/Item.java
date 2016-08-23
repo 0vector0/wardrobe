@@ -8,7 +8,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "item")
-public class Item extends Model  {
+public class Item extends Model {
+    private static final long serialVersionUID = -1549762000349245707L;
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 
@@ -25,7 +26,7 @@ public class Item extends Model  {
     private BigDecimal price;
 
     @ManyToOne
-    @JoinColumn(name="consumer_id")
+    @JoinColumn(name = "consumer_id")
     private Consumer consumer;
 
     @ManyToOne
@@ -34,14 +35,49 @@ public class Item extends Model  {
 
 
     @ManyToMany
-    @JoinTable(name="item_category")
-    private Set<Category> categorySet = new HashSet<Category>();
+    @JoinTable(name = "item_category")
+    private Set<Category> itemCategory = new HashSet<Category>();
+    @ManyToMany
+    @JoinTable(name = "item_look")
+    private Set<Look> itemLook = new HashSet<Look>();
 
     public Item() {
     }
 
     public Item(Long id) {
         super(id);
+    }
+
+    public Consumer getConsumer() {
+        return consumer;
+    }
+
+    public void setConsumer(Consumer consumer) {
+        this.consumer = consumer;
+    }
+
+    public Wardrobe getWardrobe() {
+        return wardrobe;
+    }
+
+    public void setWardrobe(Wardrobe wardrobe) {
+        this.wardrobe = wardrobe;
+    }
+
+    public Set<Category> getItemCategory() {
+        return itemCategory;
+    }
+
+    public void setItemCategory(Set<Category> itemCategory) {
+        this.itemCategory = itemCategory;
+    }
+
+    public Set<Look> getItemLook() {
+        return itemLook;
+    }
+
+    public void setItemLook(Set<Look> itemLook) {
+        this.itemLook = itemLook;
     }
 
     public String getName() {

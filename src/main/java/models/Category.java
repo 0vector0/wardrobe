@@ -14,13 +14,10 @@ public class Category extends Model {
     private static final long serialVersionUID = 4482487573155059686L;
     @Column(name = "name", nullable = false)
     private String name;
-
     @Column(name = "description")
     private String description;
-
-    @ManyToMany(mappedBy = "categorySet")
-    private Set<Item> users = new HashSet<Item>();
-
+    @ManyToMany(mappedBy = "itemCategory")
+    private Set<Item> items = new HashSet<Item>();
 
     public Category() {
 
@@ -28,6 +25,14 @@ public class Category extends Model {
 
     public Category(Long id) {
         super(id);
+    }
+
+    public Set<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(Set<Item> items) {
+        this.items = items;
     }
 
     public String getName() {

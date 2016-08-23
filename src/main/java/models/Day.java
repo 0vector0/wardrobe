@@ -4,6 +4,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "day")
@@ -20,6 +22,10 @@ public class Day extends Model {
     @ManyToOne
     @JoinColumn(name = "consumer_id")
     private Consumer consumer;
+
+    @ManyToMany
+    @JoinTable(name = "day_look")
+    private Set<Look> dayLook = new HashSet<Look>();
 
     public Day() {
 

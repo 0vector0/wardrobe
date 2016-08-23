@@ -18,6 +18,7 @@
         <mapping class="models.Wardrobe"/>
         <mapping class="models.Category"/>
         <mapping class="models.Day"/>
+        <mapping class="models.Look"/>
 
     </session-factory>
 </hibernate-configuration>
