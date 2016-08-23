@@ -16,6 +16,7 @@
         <mapping class="models.Consumer"/>
         <mapping class="models.Item"/>
         <mapping class="models.Wardrobe"/>
+        <mapping class="models.Category"/>
 
     </session-factory>
 </hibernate-configuration>

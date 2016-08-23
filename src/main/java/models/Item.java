@@ -2,6 +2,8 @@ package models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -29,6 +31,11 @@ public class Item extends Model  {
     @ManyToOne
     @JoinColumn(name = "wardrobe_id")
     private Wardrobe wardrobe;
+
+
+    @ManyToMany
+    @JoinTable(name="item_category")
+    private Set<Category> categorySet = new HashSet<Category>();
 
     public Item() {
     }
