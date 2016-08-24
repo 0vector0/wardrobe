@@ -16,32 +16,55 @@ public class Main {
 
         Session session = null;
 
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-        Consumer consumer = new Consumer();
-        consumer.setFirstName("petro");
-        consumer.setEmail("petro@petro.com");
-        consumer.setPassword("123");
-        session.save(consumer);
-        session.getTransaction().commit();
-        session.close();
+//        session = sessionFactory.openSession();
+//        session.beginTransaction();
+//        Consumer consumer = new Consumer();
+//        consumer.setFirstName("petro");
+//        consumer.setEmail("petro@petro.com");
+//        consumer.setPassword("123");
+//        session.save(consumer);
+//        session.getTransaction().commit();
+//        session.close();
+        Item item = null;
 
         session = sessionFactory.openSession();
         session.beginTransaction();
-        Item item = new Item();
+        item = new Item();
         item.setName("item1");
+        item.setDescription("item 1 desctiption");
+        item.setColor("item 1 color");
         session.save(item);
         session.getTransaction().commit();
         session.close();
 
         session = sessionFactory.openSession();
         session.beginTransaction();
-        consumer = new Consumer();
-        consumer.setFirstName("ivan");
-        consumer.setEmail("ivan@ivan.com");
-        consumer.setPassword("123");
-        session.save(consumer);
+        item = new Item();
+        item.setName("item2");
+        item.setDescription("item 2 desctiption");
+        item.setColor("item 2 color");
+        session.save(item);
         session.getTransaction().commit();
         session.close();
+
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        item = new Item();
+        item.setName("item3");
+        item.setDescription("item 3 desctiption");
+        item.setColor("item 3 color");
+        session.save(item);
+        session.getTransaction().commit();
+        session.close();
+
+//        session = sessionFactory.openSession();
+//        session.beginTransaction();
+//        consumer = new Consumer();
+//        consumer.setFirstName("ivan");
+//        consumer.setEmail("ivan@ivan.com");
+//        consumer.setPassword("123");
+//        session.save(consumer);
+//        session.getTransaction().commit();
+//        session.close();
     }
 }

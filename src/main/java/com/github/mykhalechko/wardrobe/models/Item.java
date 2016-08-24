@@ -32,20 +32,28 @@ public class Item extends Model {
     @ManyToOne
     @JoinColumn(name = "wardrobe_id")
     private Wardrobe wardrobe;
-
-
     @ManyToMany
     @JoinTable(name = "item_category")
     private Set<Category> itemCategory = new HashSet<Category>();
     @ManyToMany
     @JoinTable(name = "item_look")
     private Set<Look> itemLook = new HashSet<Look>();
-
     public Item() {
     }
 
     public Item(Long id) {
         super(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", size='" + size + '\'' +
+                ", color='" + color + '\'' +
+                ", price=" + price +
+                '}';
     }
 
     public Consumer getConsumer() {
