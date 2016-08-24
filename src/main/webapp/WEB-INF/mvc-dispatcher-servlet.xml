@@ -9,18 +9,13 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <context:component-scan
-            base-package="com.github.mykhalechko.wardrobe" />
+            base-package="com.github.mykhalechko.wardrobe"/>
 
-    <bean
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix">
-            <value>/WEB-INF/pages/</value>
-        </property>
-        <property name="suffix">
-            <value>.jsp</value>
-        </property>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
 
 </beans>
