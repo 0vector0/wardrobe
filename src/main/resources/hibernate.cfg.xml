@@ -13,12 +13,15 @@
         <property name="hibernate.connection.useUnicode">true</property>
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="com.github.mykhalechko.wardrobe.models.Consumer"/>
-        <mapping class="com.github.mykhalechko.wardrobe.models.Item"/>
-        <mapping class="com.github.mykhalechko.wardrobe.models.Wardrobe"/>
-        <mapping class="com.github.mykhalechko.wardrobe.models.Category"/>
-        <mapping class="com.github.mykhalechko.wardrobe.models.Day"/>
-        <mapping class="com.github.mykhalechko.wardrobe.models.Look"/>
+
+        <!-- TODO it works? -->
+        <!--<mapping  package="com.github.mykhalechko.wardrobe.models"/>-->
+        <!--<mapping class="com.github.mykhalechko.wardrobe.models.Consumer"/>-->
+        <!--<mapping class="com.github.mykhalechko.wardrobe.models.Item"/>-->
+        <!--<mapping class="com.github.mykhalechko.wardrobe.models.Wardrobe"/>-->
+        <!--<mapping class="com.github.mykhalechko.wardrobe.models.Category"/>-->
+        <!--<mapping class="com.github.mykhalechko.wardrobe.models.Day"/>-->
+        <!--<mapping class="com.github.mykhalechko.wardrobe.models.Look"/>-->
 
     </session-factory>
 </hibernate-configuration>

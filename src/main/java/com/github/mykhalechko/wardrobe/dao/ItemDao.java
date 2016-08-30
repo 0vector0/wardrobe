@@ -1,102 +1,74 @@
 package com.github.mykhalechko.wardrobe.dao;
 
 import com.github.mykhalechko.wardrobe.models.Item;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import java.util.List;
 
 
 public class ItemDao implements ItemDaoInterface<Item, String> {
 
-    private Session currentSession;
-    private Transaction currentTransaction;
+    private EntityManager entityManager;
 
     public ItemDao() {
+        SessionFactory factory = (SessionFactory) Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
+        entityManager = factory.createEntityManager();
     }
 
-    private static SessionFactory getSessionFactory() {
-        SessionFactory sessionFactory = new Configuration().configure()
-                .buildSessionFactory();
-//        Configuration configuration = new Configuration().configure();
-//        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
-//                .applySettings(configuration.getProperties());
-//        SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
-        return sessionFactory;
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 
-    public Session openCurrentSession() {
-        currentSession = getSessionFactory().openSession();
-        return currentSession;
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
-    public Session openCurrentSessionwithTransaction() {
-        currentSession = getSessionFactory().openSession();
-        currentTransaction = currentSession.beginTransaction();
-        return currentSession;
+    private void openTransaction() {
+        entityManager.getTransaction().begin();
     }
 
-    public void closeCurrentSession() {
-        currentSession.close();
+    private void closeTransaction() {
+        entityManager.getTransaction().commit();
     }
-
-    public void closeCurrentSessionwithTransaction() {
-        currentTransaction.commit();
-        currentSession.close();
-    }
-
-    public Session getCurrentSession() {
-        return currentSession;
-    }
-
-    public void setCurrentSession(Session currentSession) {
-        this.currentSession = currentSession;
-    }
-
-    public Transaction getCurrentTransaction() {
-        return currentTransaction;
-    }
-
-    public void setCurrentTransaction(Transaction currentTransaction) {
-        this.currentTransaction = currentTransaction;
-    }
-
 
     public void persist(Item entity) {
-        getCurrentSession().save(entity);
+//        entityManager.getTransaction().begin();
+        openTransaction();
+        entityManager.persist(entity);
+        closeTransaction();
+//        entityManager.getTransaction().commit();
     }
 
     public void update(Item entity) {
-        getCurrentSession().update(entity);
+        openTransaction();
+        entityManager.merge(entity);
+        closeTransaction();
     }
 
     public Item findById(String id) {
-        Item item = (Item) getCurrentSession().get(Item.class, id);
-        return item;
+        entityManager.find(Item.class, id);
+        return null;
     }
 
     public void delete(Item entity) {
-        getCurrentSession().delete(entity);
+        openTransaction();
+        entityManager.remove(entity);
+        closeTransaction();
     }
 
     public List<Item> findAll() {
-        //TODO criteria vs HQL
-        Criteria criteria = getCurrentSession().createCriteria(Item.class);
-        List<Item> items = (List<Item>) criteria.list();
-
-//        List items =  getCurrentSession().createQuery("from Item").list();
+        openTransaction();
+        List<Item> items = entityManager.createQuery("SELECT E FROM Item E").getResultList();
+        closeTransaction();
         return items;
     }
 
     public void deleteAll() {
-        List<Item> entityList = findAll();
-        for (Item entity : entityList) {
-            delete(entity);
+        List<Item> items = findAll();
+        for (Item item : items) {
+            delete(item);
         }
-
     }
 }
