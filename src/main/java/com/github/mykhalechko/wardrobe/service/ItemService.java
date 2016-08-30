@@ -23,12 +23,12 @@ public class ItemService {
     }
 
     public Item findById(String id) {
-        Item item = itemDao.findById(id);
+        Item item = (Item) itemDao.findById(id);
         return item;
     }
 
     public void delete(String id) {
-        Item item = itemDao.findById(id);
+        Item item = (Item) itemDao.findById(id);
         itemDao.delete(item);
     }
 
