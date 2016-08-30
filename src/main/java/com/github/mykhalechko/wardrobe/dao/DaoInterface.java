@@ -4,17 +4,17 @@ package com.github.mykhalechko.wardrobe.dao;
 import java.io.Serializable;
 import java.util.List;
 
-public interface DaoInterface<T extends Serializable> {
+interface DaoInterface<E extends Serializable> {
 
-    public void persist(T entity);
+    public void persist(E entity);
 
-    public void update(T entity);
+    public void update(E entity);
 
-    public T findById(String id);
+    public E findById(String id);
 
-    public void delete(T entity);
+    public void delete(E entity);
 
-    public List<T> findAll();
+    public List<E> findAll();
 
     public void deleteAll();
 

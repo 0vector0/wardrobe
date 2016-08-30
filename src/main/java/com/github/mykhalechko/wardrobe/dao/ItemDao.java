@@ -1,12 +1,14 @@
 package com.github.mykhalechko.wardrobe.dao;
 
+import com.github.mykhalechko.wardrobe.models.Item;
+
 import java.io.Serializable;
 
 
-public class ItemDao<Item extends Serializable> extends AbstractDao<Item> {
+public class ItemDao<E extends Serializable> extends AbstractDao<E> {
 
     public ItemDao() {
         super();
-        setClazz((Class<Item>) com.github.mykhalechko.wardrobe.models.Item.class);
+        setClazz((Class<E>) Item.class);
     }
 }

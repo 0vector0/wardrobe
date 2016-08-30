@@ -7,17 +7,17 @@ import javax.persistence.Persistence;
 import java.io.Serializable;
 import java.util.List;
 
-public abstract class AbstractDao<T extends Serializable> implements DaoInterface<T> {
+abstract class AbstractDao<E extends Serializable> implements DaoInterface<E> {
 
-    private Class<T> clazz;
+    private Class<E> clazz;
     private EntityManager entityManager;
 
-    public AbstractDao() {
+    AbstractDao() {
         SessionFactory factory = (SessionFactory) Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
         entityManager = factory.createEntityManager();
     }
 
-    public final void setClazz(final Class<T> clazz) {
+    final void setClazz(final Class<E> clazz) {
         this.clazz = clazz;
     }
 
@@ -29,48 +29,48 @@ public abstract class AbstractDao<T extends Serializable> implements DaoInterfac
         this.entityManager = entityManager;
     }
 
-    protected void openTransaction() {
+    private void openTransaction() {
         entityManager.getTransaction().begin();
     }
 
-    protected void closeTransaction() {
+    private void closeTransaction() {
         entityManager.getTransaction().commit();
     }
 
 
-    public void persist(T entity) {
+    public void persist(E entity) {
         openTransaction();
         entityManager.persist(entity);
         closeTransaction();
     }
 
-    public void update(T entity) {
+    public void update(E entity) {
         openTransaction();
         entityManager.merge(entity);
         closeTransaction();
     }
 
-    public T findById(String id) {
-        return (T) entityManager.find(clazz, id);
+    public E findById(String id) {
+        return (E) entityManager.find(clazz, id);
     }
 
-    public void delete(T entity) {
+    public void delete(E entity) {
         openTransaction();
         entityManager.remove(entity);
         closeTransaction();
     }
 
-    public List<T> findAll() {
+    public List<E> findAll() {
         openTransaction();
-        List<T> tList = entityManager.createQuery("FROM " + clazz.getName()).getResultList();
+        List<E> eList = entityManager.createQuery("FROM " + clazz.getName()).getResultList();
         closeTransaction();
-        return tList;
+        return eList;
     }
 
     public void deleteAll() {
-        List<T> tList = findAll();
-        for (T t : tList) {
-            delete(t);
+        List<E> eList = findAll();
+        for (E e : eList) {
+            delete(e);
         }
     }
 

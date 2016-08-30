@@ -8,10 +8,10 @@ import java.util.List;
 
 public class ItemService {
 
-    private static ItemDao itemDao;
+    private static ItemDao<Item> itemDao;
 
     public ItemService() {
-        itemDao = new ItemDao();
+        itemDao = new ItemDao<Item>();
     }
 
     public void persist(Item entity) {
@@ -23,22 +23,19 @@ public class ItemService {
     }
 
     public Item findById(String id) {
-        Item item = (Item) itemDao.findById(id);
-        return item;
+        return itemDao.findById(id);
     }
 
     public void delete(String id) {
-        Item item = (Item) itemDao.findById(id);
+        Item item = itemDao.findById(id);
         itemDao.delete(item);
     }
 
     public List<Item> findAll() {
-        List<Item> items = itemDao.findAll();
-        return items;
+        return itemDao.findAll();
     }
 
-
-    public ItemDao itemDao() {
+    public ItemDao<Item> itemDao() {
         return itemDao;
     }
 
