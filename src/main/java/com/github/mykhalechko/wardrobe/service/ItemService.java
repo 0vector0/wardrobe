@@ -3,9 +3,11 @@ package com.github.mykhalechko.wardrobe.service;
 
 import com.github.mykhalechko.wardrobe.dao.ItemDao;
 import com.github.mykhalechko.wardrobe.models.Item;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("itemService")
 public class ItemService {
 
     private static ItemDao<Item> itemDao;
