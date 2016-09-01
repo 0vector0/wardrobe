@@ -4,9 +4,6 @@ import com.github.mykhalechko.wardrobe.models.Item;
 
 import java.util.List;
 
-/**
- * Created by vector on 01.09.2016.
- */
 public interface ItemDao  {
 
     public void addItem(Item item);
