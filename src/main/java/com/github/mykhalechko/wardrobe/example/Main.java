@@ -1,11 +1,7 @@
 package com.github.mykhalechko.wardrobe.example;
 
-import com.github.mykhalechko.wardrobe.models.Consumer;
 import com.github.mykhalechko.wardrobe.models.Item;
-import com.github.mykhalechko.wardrobe.service.ItemService;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import com.github.mykhalechko.wardrobe.service.ItemServiceImpl;
 
 import java.util.List;
 
@@ -15,8 +11,8 @@ public class Main {
     public static void main(String[] args) {
 
 
-        ItemService itemService = new ItemService();
-        List<Item> itemsList = itemService.findAll();
+        ItemServiceImpl itemService = new ItemServiceImpl();
+        List<Item> itemsList = itemService.liItems();
         System.out.println(itemsList);
 
 //        SessionFactory sessionFactory = new Configuration().configure()

@@ -2,12 +2,12 @@ package com.github.mykhalechko.wardrobe.service;
 
 
 import com.github.mykhalechko.wardrobe.dao.ConsumerDao;
-import com.github.mykhalechko.wardrobe.dao.ConsumerDao;
 import com.github.mykhalechko.wardrobe.models.Consumer;
-import com.github.mykhalechko.wardrobe.models.Consumer;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ConsumerService {
 
     private static ConsumerDao<Consumer> consumerDao;
@@ -16,8 +16,8 @@ public class ConsumerService {
         consumerDao = new ConsumerDao<Consumer>();
     }
 
-    public void persist(Consumer entity) {
-        consumerDao.persist(entity);
+    public void add(Consumer entity) {
+        consumerDao.add(entity);
     }
 
     public void update(Consumer entity) {
