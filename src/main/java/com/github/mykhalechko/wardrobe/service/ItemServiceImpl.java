@@ -33,7 +33,7 @@ public class ItemServiceImpl implements ItemService {
         return itemDao.getItemById(id);
     }
 
-    public List<Item> liItems() {
-        return itemDao.liItems();
+    public List<Item> listItems() {
+        return itemDao.listItems();
     }
 }

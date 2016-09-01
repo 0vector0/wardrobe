@@ -14,6 +14,6 @@ public interface ItemDao  {
 
     public Item getItemById(int id);
 
-    public List<Item> liItems();
+    public List<Item> listItems();
 
 }

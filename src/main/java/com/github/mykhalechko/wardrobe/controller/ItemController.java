@@ -16,7 +16,7 @@ public class ItemController {
     @RequestMapping(value = "items", method = RequestMethod.GET)
     public String listItems(Model model) {
         model.addAttribute("item", new Item());
-        model.addAttribute("listItems", this.itemService.liItems());
+        model.addAttribute("listItems", this.itemService.listItems());
 
         return "items";
     }

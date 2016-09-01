@@ -56,7 +56,7 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Item> liItems() {
+    public List<Item> listItems() {
         openTransaction();
         List<Item> items = (List<Item>) entityManager.createQuery("FROM Item").getResultList();
         closeTransaction();
