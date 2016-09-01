@@ -38,7 +38,7 @@ abstract class AbstractDao<E extends Serializable> implements DaoInterface<E> {
     }
 
 
-    public void persist(E entity) {
+    public void add(E entity) {
         openTransaction();
         entityManager.persist(entity);
         closeTransaction();

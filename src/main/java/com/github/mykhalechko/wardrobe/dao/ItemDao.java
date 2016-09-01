@@ -2,13 +2,21 @@ package com.github.mykhalechko.wardrobe.dao;
 
 import com.github.mykhalechko.wardrobe.models.Item;
 
-import java.io.Serializable;
+import java.util.List;
 
+/**
+ * Created by vector on 01.09.2016.
+ */
+public interface ItemDao  {
 
-public class ItemDao<E extends Serializable> extends AbstractDao<E> {
+    public void addItem(Item item);
 
-    public ItemDao() {
-        super();
-        setClazz((Class<E>) Item.class);
-    }
+    public void updateItem(Item item);
+
+    public void removeItem(int id);
+
+    public Item getItemById(int id);
+
+    public List<Item> liItems();
+
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 interface DaoInterface<E extends Serializable> {
 
-    public void persist(E entity);
+    public void add(E entity);
 
     public void update(E entity);
 
