@@ -29,7 +29,7 @@
 
     <!--Его передать в EntityManagerFactory-->
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf">
-        <property name="persistenceUnitName" value="DLSystemPU"/>
+        <!--<property name="persistenceUnitName" value="DLSystemPU"/>-->
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan" value="com.github.mykhalechko.wardrobe.models"/>
     </bean>
@@ -46,7 +46,7 @@
     <!--После чего включил декларативные транзакции с помощью-->
     <tx:annotation-driven transaction-manager="txManager"/>
 
-
+    <mvc:default-servlet-handler/>
     <mvc:annotation-driven/>
 
 </beans>
