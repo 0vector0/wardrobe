@@ -10,7 +10,6 @@
 
     <context:component-scan base-package="com.github.mykhalechko.wardrobe"/>
 
-
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
@@ -46,7 +45,6 @@
         <property name="generateDdl" value="true"/>
         <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
     </bean>
-
 
     <!--После чего создать transactionManager используя EntityManagerFactory-->
     <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">

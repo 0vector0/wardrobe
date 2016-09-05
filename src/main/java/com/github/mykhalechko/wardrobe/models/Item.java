@@ -5,41 +5,50 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 @Table(name = "item")
 public class Item {
+
     private static final long serialVersionUID = -1549762000349245707L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "name", length = 50, nullable = false)
     private String name;
+
     @Column(name = "description")
     private String description;
+
     @Column(name = "size")
     private String size;
+
     @Column(name = "color")
     private String color;
+
     @Column(name = "price")
     private BigDecimal price;
+
     @ManyToOne
     @JoinColumn(name = "consumer_id")
     private Consumer consumer;
+
     @ManyToOne
     @JoinColumn(name = "wardrobe_id")
     private Wardrobe wardrobe;
+
     @ManyToMany
     @JoinTable(name = "item_category")
     private Set<Category> itemCategory = new HashSet<Category>();
+
     @ManyToMany
     @JoinTable(name = "item_look")
     private Set<Look> itemLook = new HashSet<Look>();
 
     public Item() {
     }
-
 
     public Long getId() {
         return id;
