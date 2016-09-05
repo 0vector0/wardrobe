@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ItemController {
 
     @Autowired
-//   TODO private
-            ItemServiceImpl itemService;
+    private ItemServiceImpl itemService;
 
     @RequestMapping(value = "items", method = RequestMethod.GET)
     public String listItems(Model model) {

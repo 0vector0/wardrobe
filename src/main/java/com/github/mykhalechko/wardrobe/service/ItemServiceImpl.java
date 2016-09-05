@@ -2,7 +2,6 @@ package com.github.mykhalechko.wardrobe.service;
 
 
 import com.github.mykhalechko.wardrobe.dao.ItemDao;
-import com.github.mykhalechko.wardrobe.dao.ItemDaoImpl;
 import com.github.mykhalechko.wardrobe.models.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +12,7 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
     @Autowired
 //   TODO дописать private
-            ItemDao itemDao;
-
+    private ItemDao itemDao;
 
 
     public void addItem(Item item) {

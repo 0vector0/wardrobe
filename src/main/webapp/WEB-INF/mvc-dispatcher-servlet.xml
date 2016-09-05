@@ -27,21 +27,12 @@
         <property name="password" value="root"/>
     </bean>
 
-
-    <!--<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf">-->
-    <!--&lt;!&ndash;TODO org.hibernate.tutorial.jpa&ndash;&gt;-->
-    <!--<property name="persistenceUnitName" value="org.hibernate.tutorial.jpa"/>-->
-    <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--<property name="packagesToScan" value="com.github.mykhalechko.wardrobe.models"/>-->
-    <!--</bean>-->
-
-
     <!--Его передать в EntityManagerFactory-->
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf">
         <property name="packagesToScan" value="com.github.mykhalechko.wardrobe.models"/>
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
-        <property name="persistenceUnitName" value="org.hibernate.tutorial.jpa"/>
+        <property name="persistenceUnitName" value="WardrobeManagement"/>
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.show_sql">true</prop>
