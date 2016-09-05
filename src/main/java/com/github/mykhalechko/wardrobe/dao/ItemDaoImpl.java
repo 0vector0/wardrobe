@@ -12,21 +12,7 @@ import java.util.List;
 @Repository
 public class ItemDaoImpl implements ItemDao {
 
-
     private EntityManager entityManager;
-
-//    public ItemDaoImpl() {
-//        SessionFactory factory = (SessionFactory) Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
-//        entityManager = factory.createEntityManager();
-//    }
-
-    //    private void openTransaction() {
-//        entityManager.getTransaction().begin();
-//    }
-//
-//    private void closeTransaction() {
-//        entityManager.getTransaction().commit();
-//    }
 
     @PersistenceContext(unitName = "WardrobeManagement", type = PersistenceContextType.EXTENDED)
     public void setEntityManager(EntityManager entityManager) {
@@ -35,25 +21,19 @@ public class ItemDaoImpl implements ItemDao {
 
     @Transactional
     public void addItem(Item item) {
-//        openTransaction();
         entityManager.persist(item);
-//        closeTransaction();
     }
 
     @Transactional
     public void updateItem(Item item) {
-//        openTransaction();
         entityManager.merge(item);
-//        closeTransaction();
     }
 
     @Transactional
     public void removeItem(int id) {
         Item item = getItemById(id);
         if (item != null) {
-//            openTransaction();
             entityManager.remove(item);
-//            closeTransaction();
         }
     }
 
@@ -63,9 +43,7 @@ public class ItemDaoImpl implements ItemDao {
 
     @SuppressWarnings("unchecked")
     public List<Item> listItems() {
-//        openTransaction();
         List<Item> items = entityManager.createQuery("FROM Item", Item.class).getResultList();
-//        closeTransaction();
         return items;
     }
 }
