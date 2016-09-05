@@ -26,7 +26,7 @@ public class ItemDaoImpl implements ItemDao {
 //    private void closeTransaction() {
 //        entityManager.getTransaction().commit();
 //    }
-// <!--TODO заменить org.hibernate.tutorial.jpa-->
+
     @PersistenceContext(unitName = "WardrobeManagement", type = PersistenceContextType.EXTENDED)
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;

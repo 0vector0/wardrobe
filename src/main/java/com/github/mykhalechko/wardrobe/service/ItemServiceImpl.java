@@ -11,9 +11,7 @@ import java.util.List;
 @Service
 public class ItemServiceImpl implements ItemService {
     @Autowired
-//   TODO дописать private
     private ItemDao itemDao;
-
 
     public void addItem(Item item) {
         itemDao.addItem(item);
