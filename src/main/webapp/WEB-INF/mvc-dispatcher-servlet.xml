@@ -1,20 +1,51 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
+<beans xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan
-            base-package="com.github.mykhalechko.wardrobe"/>
+    <context:component-scan base-package="com.github.mykhalechko.wardrobe"/>
+
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <!--После чего объявить DataSource в spring.xml-->
+    <!-- Database Information -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url"
+                  value="jdbc:postgresql://localhost:5432/wardrobe_test"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="root"/>
+    </bean>
+
+    <!--Его передать в EntityManagerFactory-->
+    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf">
+        <property name="persistenceUnitName" value="DLSystemPU"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="com.github.mykhalechko.wardrobe.models"/>
+    </bean>
+
+    <!--После чего создать transactionManager используя EntityManagerFactory-->
+    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="emf"/>
+        <property name="jpaDialect" ref="jpaDialect"/>
+    </bean>
+
+    <!--А в него внедрить JpaDialect-->
+    <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+
+    <!--После чего включил декларативные транзакции с помощью-->
+    <tx:annotation-driven transaction-manager="txManager"/>
+
 
     <mvc:annotation-driven/>
 

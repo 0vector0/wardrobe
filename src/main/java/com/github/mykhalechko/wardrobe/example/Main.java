@@ -11,9 +11,9 @@ public class Main {
     public static void main(String[] args) {
 
 
-        ItemServiceImpl itemService = new ItemServiceImpl();
-        List<Item> itemsList = itemService.liItems();
-        System.out.println(itemsList);
+//        ItemServiceImpl itemService = new ItemServiceImpl();
+//        List<Item> itemsList = itemService.liItems();
+//        System.out.println(itemsList);
 
 //        SessionFactory sessionFactory = new Configuration().configure()
 //                .buildSessionFactory();
