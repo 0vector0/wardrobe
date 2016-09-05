@@ -2,6 +2,7 @@ package com.github.mykhalechko.wardrobe.dao;
 
 import com.github.mykhalechko.wardrobe.models.Item;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,18 +33,21 @@ public class ItemDaoImpl implements ItemDao {
         this.entityManager = entityManager;
     }
 
+    @Transactional
     public void addItem(Item item) {
 //        openTransaction();
         entityManager.persist(item);
 //        closeTransaction();
     }
 
+    @Transactional
     public void updateItem(Item item) {
 //        openTransaction();
         entityManager.merge(item);
 //        closeTransaction();
     }
 
+    @Transactional
     public void removeItem(int id) {
         Item item = getItemById(id);
         if (item != null) {
@@ -60,7 +64,7 @@ public class ItemDaoImpl implements ItemDao {
     @SuppressWarnings("unchecked")
     public List<Item> listItems() {
 //        openTransaction();
-        List<Item> items = (List<Item>) entityManager.createQuery("FROM Item").getResultList();
+        List<Item> items = entityManager.createQuery("FROM Item", Item.class).getResultList();
 //        closeTransaction();
         return items;
     }
