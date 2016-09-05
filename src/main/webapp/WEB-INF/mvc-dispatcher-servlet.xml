@@ -27,12 +27,35 @@
         <property name="password" value="root"/>
     </bean>
 
+
+    <!--<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf">-->
+    <!--&lt;!&ndash;TODO org.hibernate.tutorial.jpa&ndash;&gt;-->
+    <!--<property name="persistenceUnitName" value="org.hibernate.tutorial.jpa"/>-->
+    <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--<property name="packagesToScan" value="com.github.mykhalechko.wardrobe.models"/>-->
+    <!--</bean>-->
+
+
     <!--Его передать в EntityManagerFactory-->
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf">
-        <!--<property name="persistenceUnitName" value="DLSystemPU"/>-->
-        <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan" value="com.github.mykhalechko.wardrobe.models"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+        <property name="persistenceUnitName" value="org.hibernate.tutorial.jpa"/>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
     </bean>
+
+    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="showSql" value="true"/>
+        <property name="generateDdl" value="true"/>
+        <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
+    </bean>
+
 
     <!--После чего создать transactionManager используя EntityManagerFactory-->
     <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">

@@ -1,68 +1,68 @@
-package com.github.mykhalechko.wardrobe.dao;
-
-
-import com.github.mykhalechko.wardrobe.models.old.User;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
-public class UserDAO {
-
-    public void addUserDetails(String userName, String password, String email,
-                               String phone, String city) {
-        try {
-
-
-
-            SessionFactory sessionFactory = new Configuration().configure()
-                    .buildSessionFactory();
-            Session session = sessionFactory.openSession();
-            session.beginTransaction();
-
-//            AppUser user = new AppUser("firstuser");
-
-            User user = new User();
-            user.setUserName(userName);
-            user.setPassword1(password);
-            user.setEmail(email);
-            user.setCity(city);
-            user.setPhone(phone);
-
-            session.save(user);
-
-            session.getTransaction().commit();
-            System.out.println("\n\n Details Added \n");
-            session.close();
-
-
-
-//            // 1. configuring hibernate
-//            Configuration configuration = new Configuration().configure();
+//package com.github.mykhalechko.wardrobe.dao;
 //
-//            // 2. create sessionfactory
-//            SessionFactory sessionFactory = configuration.buildSessionFactory();
 //
-//            // 3. Get Session object
+//import com.github.mykhalechko.wardrobe.models.old.User;
+//import org.hibernate.HibernateException;
+//import org.hibernate.Session;
+//import org.hibernate.SessionFactory;
+//import org.hibernate.cfg.Configuration;
+//
+//public class UserDAO {
+//
+//    public void addUserDetails(String userName, String password, String email,
+//                               String phone, String city) {
+//        try {
+//
+//
+//
+//            SessionFactory sessionFactory = new Configuration().configure()
+//                    .buildSessionFactory();
 //            Session session = sessionFactory.openSession();
+//            session.beginTransaction();
 //
-//            // 4. Starting Transaction
-//            Transaction transaction = session.beginTransaction();
+////            AppUser user = new AppUser("firstuser");
+//
 //            User user = new User();
 //            user.setUserName(userName);
 //            user.setPassword1(password);
 //            user.setEmail(email);
 //            user.setCity(city);
 //            user.setPhone(phone);
+//
 //            session.save(user);
-//            transaction.commit();
+//
+//            session.getTransaction().commit();
 //            System.out.println("\n\n Details Added \n");
-
-        } catch (HibernateException e) {
-            System.out.println(e.getMessage());
-            System.out.println("error");
-        }
-
-    }
-
-}
+//            session.close();
+//
+//
+//
+////            // 1. configuring hibernate
+////            Configuration configuration = new Configuration().configure();
+////
+////            // 2. create sessionfactory
+////            SessionFactory sessionFactory = configuration.buildSessionFactory();
+////
+////            // 3. Get Session object
+////            Session session = sessionFactory.openSession();
+////
+////            // 4. Starting Transaction
+////            Transaction transaction = session.beginTransaction();
+////            User user = new User();
+////            user.setUserName(userName);
+////            user.setPassword1(password);
+////            user.setEmail(email);
+////            user.setCity(city);
+////            user.setPhone(phone);
+////            session.save(user);
+////            transaction.commit();
+////            System.out.println("\n\n Details Added \n");
+//
+//        } catch (HibernateException e) {
+//            System.out.println(e.getMessage());
+//            System.out.println("error");
+//        }
+//
+//    }
+//
+//}
